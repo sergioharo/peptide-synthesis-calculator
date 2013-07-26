@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Peptide Synthesis Calculator</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+</head>
+<body>
+	<div class="wrapper">
+		
+	</div>
+
+	<script type="text/template" id="peptide_template">
+			<thead>
+				<th>Compound</th>
+				<th>Mw (g/mol)</th>
+				<th>Equiv</th>
+				<th>mmol</th>
+				<th>wt (mg)</th>
+			</thead>
+	</script>
+
+	<script type="text/template" id="item_template">
+		<td><input type="text" class="aaInput" placeholder="Enter an amino acid" value="<%= name %>" /></td>
+		<td><%= mw %></td>
+		<td><%= equiv %></td>
+		<td><%= mmol %></td>
+		<td><%= wt %></td>
+	</script>
+
+	<script>
+	var require = {
+		paths: {
+			"backbone": "vendor/backbone.min",
+			"underscore": "vendor/underscore.min",
+			"jquery": "http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min"
+		},
+	    shim: {
+	        'backbone': {
+	            deps: ['underscore', 'jquery'],
+	            exports: 'Backbone'
+	        },
+	        'underscore': {
+	            exports: '_'
+	        }
+	    }
+	};
+	</script>
+	<script src="js/vendor/require.js" data-main="js/app"></script>
+</body>
+</html>
