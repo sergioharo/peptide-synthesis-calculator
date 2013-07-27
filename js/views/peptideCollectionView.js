@@ -1,5 +1,5 @@
-define(["jquery", "underscore", "backbone", "views/updatingCollectionView", "views/peptideView", "models/peptideComponent"], 
-	function($, _, Backbone, UpdatingCollectionView, PeptideView, PeptideComponent) {
+define(["underscore", "backbone", "views/updatingCollectionView", "views/peptideView", "models/peptideComponent"], 
+	function(_, Backbone, UpdatingCollectionView, PeptideView, PeptideComponent) {
 
 	var peptideCollectionView = Backbone.View.extend({
 		tagName: "table",

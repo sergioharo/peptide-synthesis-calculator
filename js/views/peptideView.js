@@ -1,4 +1,4 @@
-define(["jquery", "backbone", "underscore", "data"], function ($, Backbone, _, aaMap) {
+define(["backbone", "underscore", "data"], function (Backbone, _, aaMap) {
 
 	var peptideView = Backbone.View.extend({
 
