@@ -31,7 +31,8 @@
 		paths: {
 			"backbone": "vendor/backbone.min",
 			"underscore": "vendor/underscore.min",
-			"jquery": "http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min"
+			"jquery": "vendor/jquery-2.0.3.min",
+			"bootstrap": "vendo/bootstrap.min"
 		},
 	    shim: {
 	        'backbone': {
@@ -40,7 +41,10 @@
 	        },
 	        'underscore': {
 	            exports: '_'
-	        }
+	        },
+	        'bootstrap': {
+	            deps: ['jquery'],
+	        },
 	    }
 	};
 	</script>
