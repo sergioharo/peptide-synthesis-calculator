@@ -19,9 +19,15 @@ define(["backbone", "underscore"], function (Backbone, _) {
 		},
 
 		events: {
+			'click': 'handleDropdown',
 			'change .amount': 'amountChanged',
 			'change .equiv': 'equivChanged',
 			'change .actEquiv': 'actEquivChanged'
+		},
+
+		handleDropdown: function (e) {
+			e.stopPropagation();
+			return false;
 		},
 
 		valChanged: function (input, propName)
