@@ -22,6 +22,7 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 			var template = _.template( $(this.template).html(), {});
 			this.$el.html(template);
 			this._collectionView.render();
+
 			return this;
 		},
 
@@ -30,20 +31,21 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 		},
 
 		aaAdd: function (e) {
-			var aaCode = this.$('.aaInput').val();
+			var input = this.$('.aaInput');
+			var aaCode = input.val();
 
 			var aa = aaMap[aaCode];
-			if (!aa)
-				return false;
+			if (aa) {
+				this.collection.add(new PeptideComponent({
+					"name": aa.name,
+					"code": aaCode,
+					"mw": aa.mw,
+					"type": aa.type,
+					"settings": this.settings
+				}));
+			}
 
-			this.collection.add(new PeptideComponent({
-				"name": aa.name,
-				"code": aaCode,
-				"mw": aa.mw,
-				"type": aa.type,
-				"settings": this.settings
-			}));
-			return false;
+			input.val("");
 		}
 
 	});
