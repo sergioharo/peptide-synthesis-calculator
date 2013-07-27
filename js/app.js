@@ -13,8 +13,9 @@ define(["views/peptideCollectionView", "models/peptide", "backbone"], function(P
 
 	var view = new PeptideCollectionView({
 		collection: new Peptide(),
-		settings: settings
+		settings: settings,
+		el: "#peptideContainer"
 	});
 
-	$(".wrapper").append(view.render().el);
+	view.render();
 });
