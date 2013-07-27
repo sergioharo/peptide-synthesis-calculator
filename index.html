@@ -5,6 +5,7 @@
 </head>
 <body>
 	<div class="wrapper">
+		<div id="settingsContainer"></div>
 		<div id="peptideContainer"></div>
 	</div>
 
@@ -24,6 +25,11 @@
 		<td><%= equiv %></td>
 		<td><%= mmol %></td>
 		<td><%= wt %></td>
+	</script>
+
+	<script type="text/template" id="settings_template">
+			<label for="amount">Amount</label>
+			<input type="text" value="<%= val %>" id="amount" class="amount" />
 	</script>
 
 	<script>

@@ -1,4 +1,4 @@
-define(["views/peptideCollectionView", "models/peptide", "backbone"], function(PeptideCollectionView, Peptide, Backbone){
+define(["views/peptideCollectionView", "views/settingsView", "models/peptide", "backbone"], function(PeptideCollectionView, SettingsView, Peptide, Backbone){
 
 	// creating settings model
 	var Settings = Backbone.Model.extend({
@@ -17,5 +17,11 @@ define(["views/peptideCollectionView", "models/peptide", "backbone"], function(P
 		el: "#peptideContainer"
 	});
 
+	var settingsView = new SettingsView({
+		model: settings,
+		el: "#settingsContainer"
+	});
+
+	settingsView.render();
 	view.render();
 });
