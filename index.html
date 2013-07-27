@@ -11,22 +11,17 @@
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Peptide Synthesis Calculator</a>
-            <ul class="nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
-                <ul class="dropdown-menu" id="settingsContainer">
-                  
-                </ul>
+	  <a class="navbar-brand" href="#">Peptide Synthesis Calculator</a>
+	  <ul class="nav navbar-nav pull-right">
+              <li id="fat-menu" class="dropdown">
+                <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                <ul class="dropdown-menu" id="settingsContainer" role="menu" aria-labelledby="settings"></ul>
               </li>
-            </ul>
-        </div>
-      </div>
-    </div>
+            </ul>	  
+	</div>
 
 	<div class="container">
+		
 		<table id="peptideContainer" class="table table-striped"></table>
 	</div>
 
@@ -56,20 +51,20 @@
 	</script>
 
 	<script type="text/template" id="settings_template">
-			<li class="nav-header">Amount</li>
+			<li class="dropdown-header">Amount</li>
 			<li class="nav-setting">
-				<input type="text" value="<%= amt %>" class="amount input-mini" />
-				<span>mmol</span>
+				<input type="text" value="<%= amt %>" class="amount form-control input-small" />
+				<span class="help-block">mmol</span>
 			</li>
 			<li class="divider"></li>
-			<li class="nav-header">AA Equiv</li>
+			<li class="dropdown-header">AA Equiv</li>
 			<li class="nav-setting">
-				<input type="text" value="<%= equiv %>" class="equiv input-mini" />
+				<input type="text" value="<%= equiv %>" class="equiv form-control input-small" />
 			</li>
 			<li class="divider"></li>
-			<li class="nav-header">Activator Equiv</li>
+			<li class="dropdown-header">Activator Equiv</li>
 			<li class="nav-setting">
-				<input type="text" value="<%= actEquiv %>" class="actEquiv input-mini" />
+				<input type="text" value="<%= actEquiv %>" class="actEquiv form-control input-small" />
 			</li>
 	</script>
 

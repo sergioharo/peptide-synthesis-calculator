@@ -1,14 +1,80 @@
+/* Top nav and header
+-------------------------------------------------- */
 body {
-	padding-top: 60px;
-	padding-bottom: 40px;
+	position: relative;
+	padding-top: 70px;
 }
+
+.navbar-inverse {
+  background-color: #563d7c;
+}
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #cdbfe3;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #463265;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+  border-top-color: #999999;
+  border-bottom-color: #999999;
+}
+
+.navbar-inverse .navbar-nav > .open > a .caret,
+.navbar-inverse .navbar-nav > .open > a:hover .caret,
+.navbar-inverse .navbar-nav > .open > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.navbar-brand {
+	max-width: 300px;
+}
+
+/* Custom docs button
+-------------------------------------------------- */
+.btn-bs {
+  color: #563d7c;
+  background-color: #fff;
+  border-color: #e5e5e5;
+}
+.btn-bs:hover,
+.btn-bs:active {
+  color: #fff;
+  background-color: #563d7c;
+  border-color: #563d7c;
+}
+
+/* My Styles
+-------------------------------------------------- */
 
 .nav-setting {
 	padding: 3px 20px;
 }
 
 .nav-setting input {
+	width: 60px;
+	display: inline-block;
 	margin-bottom: 0;
+}
+
+.nav-setting .help-block {
+	display: inline-block;
 }
 
 input.aaInput {
