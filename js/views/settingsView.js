@@ -5,7 +5,6 @@ define(["backbone", "underscore"], function (Backbone, _) {
 		template: '#settings_template',
 
 		initialize: function (options) {
-			console.log(this.model);
 			this.listenTo(this.model, "change", this.render);
 		},
 
