@@ -1,4 +1,6 @@
-define(["views/peptideCollectionView", "models/peptide"], function(PeptideCollectionView, Peptide){
+define(["views/peptideCollectionView", "models/peptide", "backbone"], function(PeptideCollectionView, Peptide, Backbone){
+
+	// creating settings model
 	var Settings = Backbone.Model.extend({
 		defaults: {
 			"amino-acid": 4,
