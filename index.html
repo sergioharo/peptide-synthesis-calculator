@@ -5,7 +5,7 @@
 	<title>Peptide Synthesis Calculator</title>
 	<meta name="description" content="">
     <meta name="author" content="Sergio Haro">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet" />
 	<link href="css/styles.css" rel="stylesheet" />
 	<link rel="shortcut icon" href="favicon.png">
 </head>
@@ -33,19 +33,26 @@
 	<script type="text/template" id="peptide_template">
 			<thead>
 				<th>Compound</th>
-				<th>Mw (g/mol)</th>
+				<th>M<sub>w</sub> (g/mol)</th>
 				<th>Equiv</th>
 				<th>mmol</th>
 				<th>wt (mg)</th>
+				<th></th>
 			</thead>
+			<tr>
+				<td colspan=6>
+					<input type="text" class="aaInput" placeholder="Enter an amino acid" value="<%= name %>" />
+				</td>
+			</tr>
 	</script>
 
 	<script type="text/template" id="item_template">
-		<td><input type="text" class="aaInput" placeholder="Enter an amino acid" value="<%= name %>" /></td>
+		<td><%= name %></td>
 		<td><%= mw %></td>
 		<td><%= equiv %></td>
 		<td><%= mmol %></td>
 		<td><%= wt %></td>
+		<td></td>
 	</script>
 
 	<script type="text/template" id="settings_template">

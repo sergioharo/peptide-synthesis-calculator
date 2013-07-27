@@ -1,20 +1,14 @@
-define(["underscore", "backbone", "views/updatingCollectionView", "views/peptideView", "models/peptideComponent"], 
-	function(_, Backbone, UpdatingCollectionView, PeptideView, PeptideComponent) {
+define(["underscore", "backbone", "views/updatingCollectionView", "views/peptideView", "models/peptideComponent", "data"],
+	function(_, Backbone, UpdatingCollectionView, PeptideView, PeptideComponent, aaMap) {
 
 	var peptideCollectionView = Backbone.View.extend({
-		tagName: "table",
-		className: 'peptide',
 		template: '#peptide_template',
 
 		initialize: function (options) {
-			_.bindAll(this, ['setupItems']);
-
-			this._items = this.collection;
 			this.settings = options.settings;
 			this._collectionView = new UpdatingCollectionView({
-				tagName: "tbody",
-				className: 'components',
-				collection: this._items,
+				el: this.el,
+				collection: this.collection,
 				childViewConstructor: PeptideView,
 				childViewOptions: {
 					tagName: 'tr',
@@ -22,33 +16,36 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 					settings: this.settings
 				}
 			});
-
-			this._items.on('change', this.setupItems);
 		},
 
 		render: function() {
-			this.setupItems();
-
 			var template = _.template( $(this.template).html(), {});
-			this.$el.html(template)
-					.append(this._collectionView.render().el);
-
+			this.$el.html(template);
+			this._collectionView.render();
 			return this;
 		},
 
-		removeEmptyItems: function (exceptFor) {
-			var items = this._items;
-			var empty = items.filter(function (item) { return item.isNull(); });
-			_.each(empty, function (item) { if (item != exceptFor) items.remove(item); });
+		events: {
+			'change .aaInput': 'aaAdd'
 		},
 
-		setupItems: function () {
-			var lastItem = this._items.last();
-			this.removeEmptyItems(lastItem);
+		aaAdd: function (e) {
+			var aaCode = this.$('.aaInput').val();
 
-			if (!lastItem || !lastItem.isNull() )
-				this._items.add(new PeptideComponent({settings: this.settings}));
+			var aa = aaMap[aaCode];
+			if (!aa)
+				return false;
+
+			this.collection.add(new PeptideComponent({
+				"name": aa.name,
+				"code": aaCode,
+				"mw": aa.mw,
+				"type": aa.type,
+				"settings": this.settings
+			}));
+			return false;
 		}
+
 	});
 
 	return peptideCollectionView;
