@@ -102,12 +102,12 @@ define([], function() {
 		},
 		HATU: {
 			type: "activator",
-			name: "",
+			name: "HATU",
 			mw: 380.23
 		},
 		HBTU: {
 			type: "activator",
-			name: "",
+			name: "HBTU",
 			mw: 379.3
 		}
 	};
