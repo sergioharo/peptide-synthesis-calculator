@@ -1,8 +1,14 @@
-define(["jquery", "backbone", "underscore", "data", "models/aminoAcid"], function ($, Backbone, _, aaMap, AminoAcid) {
+define(["jquery", "backbone", "underscore", "data"], function ($, Backbone, _, aaMap) {
 
 	var peptideView = Backbone.View.extend({
 
 		template: '#item_template',
+
+		initialize: function (options) {
+			this.settings = options.settings;
+			this.listenTo(this.model, "change", this.render);
+			this.listenTo(this.settings, "change", this.render);
+		},
 
 		render: function() {
 			var template = _.template( $(this.template).html(), { 
@@ -17,23 +23,23 @@ define(["jquery", "backbone", "underscore", "data", "models/aminoAcid"], functio
 		},
 
 		getName: function () {
-			return !this.model.isNull() ? this.model.get("aminoAcid").get("name") : "";
+			return !this.model.isNull() ? this.model.get("name") : "";
 		},
 
 		getMW: function () {
-			return !this.model.isNull() ? this.model.get("aminoAcid").get("mw") : "";
+			return !this.model.isNull() ? this.model.get("mw") : "";
 		},
 
 		getEquiv: function () {
-			return !this.model.isNull() ? this.model.get("equiv") : "";
+			return !this.model.isNull() ? this.model.equiv() : "";
 		},
 
 		getMmol: function () {
-			return !this.model.isNull() ? this.model.mmol() : "";
+			return !this.model.isNull() ? this.model.mmol().toFixed(2) : "";
 		},
 
 		getWT: function () {
-			return !this.model.isNull() ? this.model.wt() : "";
+			return !this.model.isNull() ? this.model.wt().toFixed(2) : "";
 		},
 
 		events: {
@@ -47,9 +53,12 @@ define(["jquery", "backbone", "underscore", "data", "models/aminoAcid"], functio
 			if (!aa)
 				return false;
 
-			aa = new AminoAcid(aa);
-			this.model.set('aminoAcid', aa);
-			this.model.set("equiv", this.settings(aa.get("type")));
+			this.model.set({
+				"name": aa.name,
+				"code": aaCode,
+				"mw": aa.mw,
+				"type": aa.type
+			});
 			return false;
 		}
 
