@@ -1,59 +1,97 @@
+<!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Peptide Synthesis Calculator</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<meta name="description" content="">
+    <meta name="author" content="Sergio Haro">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/styles.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="favicon.png">
 </head>
 <body>
-	<div class="wrapper">
-		<div id="settingsContainer"></div>
-		<div id="peptideContainer"></div>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Peptide Synthesis Calculator</a>
+            <ul class="nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                <ul class="dropdown-menu" id="settingsContainer">
+                  
+                </ul>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+	<div class="container">
+		<table id="peptideContainer" class="table table-striped"></table>
 	</div>
 
 	<script type="text/template" id="peptide_template">
 			<thead>
 				<th>Compound</th>
-				<th>Mw (g/mol)</th>
+				<th>M<sub>w</sub> (g/mol)</th>
 				<th>Equiv</th>
 				<th>mmol</th>
 				<th>wt (mg)</th>
+				<th></th>
 			</thead>
+			<tr>
+				<td colspan=6>
+					<input type="text" class="aaInput" placeholder="Enter an amino acid" value="<%= name %>" />
+				</td>
+			</tr>
 	</script>
 
 	<script type="text/template" id="item_template">
-		<td><input type="text" class="aaInput" placeholder="Enter an amino acid" value="<%= name %>" /></td>
+		<td><%= name %></td>
 		<td><%= mw %></td>
 		<td><%= equiv %></td>
 		<td><%= mmol %></td>
 		<td><%= wt %></td>
+		<td></td>
 	</script>
 
 	<script type="text/template" id="settings_template">
-			<label for="amount">Amount</label>
-			<input type="text" value="<%= val %>" id="amount" class="amount" />
+			<li class="nav-header">Amount</li>
+			<li class="nav-setting">
+				<input type="text" value="<%= amt %>" class="amount input-mini" />
+				<span>mmol</span>
+			</li>
+			<li class="divider"></li>
+			<li class="nav-header">AA Equiv</li>
+			<li class="nav-setting">
+				<input type="text" value="<%= equiv %>" class="equiv input-mini" />
+			</li>
+			<li class="divider"></li>
+			<li class="nav-header">Activator Equiv</li>
+			<li class="nav-setting">
+				<input type="text" value="<%= actEquiv %>" class="actEquiv input-mini" />
+			</li>
 	</script>
 
 	<script>
 	var require = {
 		paths: {
 			"backbone": "vendor/backbone.min",
-			"underscore": "vendor/underscore.min",
-			"jquery": "vendor/jquery-2.0.3.min",
-			"bootstrap": "vendo/bootstrap.min"
+			"underscore": "vendor/underscore.min"
 		},
 	    shim: {
 	        'backbone': {
-	            deps: ['underscore', 'jquery'],
+	            deps: ['underscore'],
 	            exports: 'Backbone'
 	        },
 	        'underscore': {
 	            exports: '_'
-	        },
-	        'bootstrap': {
-	            deps: ['jquery'],
-	        },
+	        }
 	    }
 	};
 	</script>
+	<script src="js/vendor/jquery-2.0.3.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/require.js" data-main="js/app"></script>
 </body>
 </html>

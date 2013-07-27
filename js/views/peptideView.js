@@ -1,4 +1,4 @@
-define(["jquery", "backbone", "underscore", "data"], function ($, Backbone, _, aaMap) {
+define(["backbone", "underscore"], function (Backbone, _, aaMap) {
 
 	var peptideView = Backbone.View.extend({
 
@@ -11,7 +11,7 @@ define(["jquery", "backbone", "underscore", "data"], function ($, Backbone, _, a
 		},
 
 		render: function() {
-			var template = _.template( $(this.template).html(), { 
+			var template = _.template( $(this.template).html(), {
 				name: this.getName(),
 				mw: this.getMW(),
 				equiv: this.getEquiv(),
@@ -40,26 +40,6 @@ define(["jquery", "backbone", "underscore", "data"], function ($, Backbone, _, a
 
 		getWT: function () {
 			return !this.model.isNull() ? this.model.wt().toFixed(2) : "";
-		},
-
-		events: {
-			'change .aaInput': 'amountChanged'
-		},
-
-		amountChanged: function (e) {
-			var aaCode = this.$('.aaInput').val();
-
-			var aa = aaMap[aaCode];
-			if (!aa)
-				return false;
-
-			this.model.set({
-				"name": aa.name,
-				"code": aaCode,
-				"mw": aa.mw,
-				"type": aa.type
-			});
-			return false;
 		}
 
 	});
