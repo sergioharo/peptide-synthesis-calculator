@@ -10,7 +10,7 @@ define(["jquery", "underscore", "backbone", "views/updatingCollectionView", "vie
 			_.bindAll(this, ['setupItems']);
 
 			this._items = this.collection;
-			this._settings = options.settings;
+			this.settings = options.settings;
 			this._collectionView = new UpdatingCollectionView({
 				tagName: "tbody",
 				className: 'components',
@@ -19,7 +19,7 @@ define(["jquery", "underscore", "backbone", "views/updatingCollectionView", "vie
 				childViewOptions: {
 					tagName: 'tr',
 					className: 'component',
-					app: this.app
+					settings: this.settings
 				}
 			});
 
@@ -47,7 +47,7 @@ define(["jquery", "underscore", "backbone", "views/updatingCollectionView", "vie
 			this.removeEmptyItems(lastItem);
 
 			if (!lastItem || !lastItem.isNull() )
-				this._items.add(new PeptideComponent({settings: this._settings}));
+				this._items.add(new PeptideComponent({settings: this.settings}));
 		}
 	});
 
