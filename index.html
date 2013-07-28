@@ -28,7 +28,7 @@
 	<script type="text/template" id="peptide_template">
 			<thead>
 				<th>Compound</th>
-				<th>Mw (g/mol)</th>
+				<th>MW (g/mol)</th>
 				<th>Equiv</th>
 				<th>mmol</th>
 				<th>wt (mg)</th>
@@ -68,6 +68,12 @@
 			</li>
 	</script>
 
+	<script type="text/template" id="autocomplete_template">
+		<p class="aa-code"><%= data.code %></p>                           
+    	<p class="aa-name"><%= data.name %></p>
+    	<p class="aa-type"><%= data.type %></p>
+    </script>
+
 	<script>
 	var require = {
 		paths: {
@@ -87,6 +93,7 @@
 	</script>
 	<script src="js/vendor/jquery-2.0.3.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/typeahead.js"></script>
 	<script src="js/vendor/require.js" data-main="js/app"></script>
 </body>
 </html>

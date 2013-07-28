@@ -3,6 +3,7 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 
 	var peptideCollectionView = Backbone.View.extend({
 		template: '#peptide_template',
+		autocompleteTemplate: "#autocomplete_template",
 
 		initialize: function (options) {
 			this.settings = options.settings;
@@ -16,36 +17,61 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 					settings: this.settings
 				}
 			});
+
+			this.data = [];
+			for(var key in aaMap) {
+				var aminoAcid = aaMap[key];
+				var datum = {
+					value: aminoAcid.code + " - " + aminoAcid.name,
+					data: aminoAcid,
+					tokens: aminoAcid.name.replace(/\(|\)/g, "-").split("-")
+				};
+				datum.tokens.splice(0,0, aminoAcid.code, aminoAcid.name);
+				this.data.push(datum);
+			}
+
+			this.templateFn = _.template( $(this.template).html());
+			this.autocompleteTemplateFn = _.template( $(this.autocompleteTemplate).html());
 		},
 
 		render: function() {
-			var template = _.template( $(this.template).html(), {});
+			var template = this.templateFn({});
 			this.$el.html(template);
 			this._collectionView.render();
 
+			this.input = this.$(".aaInput").typeahead({
+				autoselect: true,
+				sections: [{
+					name: 'aminoAcids',
+					source: new Dataset({
+						local: this.data
+					}),
+					templates: {
+						suggestion: this.autocompleteTemplateFn
+					}
+				}]
+			});
 			return this;
 		},
 
 		events: {
-			'change .aaInput': 'aaAdd'
+			'typeahead:selected .aaInput': 'aaAdd'
 		},
 
-		aaAdd: function (e) {
-			var input = this.$('.aaInput');
-			var aaCode = input.val();
-
-			var aa = aaMap[aaCode];
+		aaAdd: function (e, datum) {
+			var aa = datum.data;
 			if (aa) {
 				this.collection.add(new PeptideComponent({
 					"name": aa.name,
-					"code": aaCode,
+					"code": aa.code,
 					"mw": aa.mw,
 					"type": aa.type,
 					"settings": this.settings
 				}));
 			}
 
-			input.val("");
+			this.input.val("");
+			//this.input.typeahead("val", "");
 		}
 
 	});
