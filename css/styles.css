@@ -152,6 +152,11 @@ input.aaInput {
   display: block;
 }
 
+.action {
+  cursor: pointer;
+  display: inline-block;
+}
+
 .action:hover {
   text-decoration: none;
 }
