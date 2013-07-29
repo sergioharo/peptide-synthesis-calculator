@@ -1600,7 +1600,7 @@
                 }
             },
             val: function val(newVal) {
-                return newVal ? this.each(setQuery) : this.map(getQuery).get();
+                return _.isString(newVal) ? this.each(setQuery) : this.map(getQuery).get();
                 function setQuery() {
                     var $input = $(this), typeahead;
                     if (typeahead = $input.data(typeaheadKey)) {

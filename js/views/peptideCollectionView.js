@@ -68,10 +68,9 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 					"type": aa.type,
 					"settings": this.settings
 				}));
-			}
 
-			this.input.val("");
-			//this.input.typeahead("val", "");
+				this.input.typeahead("val", "");
+			}			
 		}
 
 	});
