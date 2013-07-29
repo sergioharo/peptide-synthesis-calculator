@@ -24,9 +24,9 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 				var datum = {
 					value: aminoAcid.code + " - " + aminoAcid.name,
 					data: aminoAcid,
-					tokens: aminoAcid.name.replace(/\(|\)/g, "-").split("-")
+					tokens: aminoAcid.name.replace(/\(|\)/g, "-").replace(/fmoc-\w-/gi,"").split("-")
 				};
-				datum.tokens.splice(0,0, aminoAcid.code, aminoAcid.name);
+				datum.tokens.splice(0,0, aminoAcid.code);
 				this.data.push(datum);
 			}
 
