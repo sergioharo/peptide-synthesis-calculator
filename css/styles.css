@@ -142,3 +142,25 @@ input.aaInput {
 .aa-type {
   font-size: 14px;
 }
+
+.component .actions {
+  display: none;
+  position: absolute;
+}
+
+.component:hover .actions {
+  display: block;
+}
+
+.action {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.action:hover {
+  text-decoration: none;
+}
+
+.action.delete {
+  color: red;
+}

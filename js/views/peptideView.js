@@ -16,7 +16,8 @@ define(["backbone", "underscore"], function (Backbone, _, aaMap) {
 				mw: this.getMW(),
 				equiv: this.getEquiv(),
 				mmol: this.getMmol(),
-				wt: this.getWT()
+				wt: this.getWT(),
+				model: this.model
 			});
 			this.$el.html( template );
 			return this;

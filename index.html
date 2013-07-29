@@ -6,6 +6,7 @@
 	<meta name="description" content="">
     <meta name="author" content="Sergio Haro">
     <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-glyphicons.css" rel="stylesheet" />
 	<link href="css/styles.css" rel="stylesheet" />
 	<link rel="shortcut icon" href="favicon.png">
 </head>
@@ -47,7 +48,13 @@
 		<td><%= equiv %></td>
 		<td><%= mmol %></td>
 		<td><%= wt %></td>
-		<td></td>
+		<td>
+			<div class="actions">
+				<a href="#" class="delete action" data-cid="<%= model.cid %>" title="Delete Amino Acid">
+					<span class="glyphicon glyphicon-remove"></span>
+				</a>
+			</div>
+		</td>
 	</script>
 
 	<script type="text/template" id="settings_template">
