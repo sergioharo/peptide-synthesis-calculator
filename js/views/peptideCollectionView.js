@@ -55,7 +55,8 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 		},
 
 		events: {
-			'typeahead:selected .aaInput': 'aaAdd'
+			'typeahead:selected .aaInput': 'aaAdd',
+			'click .delete': 'aaDelete'
 		},
 
 		aaAdd: function (e, datum) {
@@ -71,6 +72,14 @@ define(["underscore", "backbone", "views/updatingCollectionView", "views/peptide
 
 				this.input.typeahead("val", "");
 			}			
+		},
+
+		aaDelete: function (e) {
+			var target = e.currentTarget;
+			var cid = $(target).data("cid");
+			var model = this.collection.get(cid);
+			if (model)
+				this.collection.remove(model);
 		}
 
 	});
