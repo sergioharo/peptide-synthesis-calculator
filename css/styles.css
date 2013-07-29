@@ -78,9 +78,6 @@ body {
 }
 
 input.aaInput {
-	background: transparent;
-	border-color: transparent;
-	box-shadow: none;
 	width: 100%;
 	margin-bottom: 0;
 }
