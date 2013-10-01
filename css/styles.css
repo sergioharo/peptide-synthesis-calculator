@@ -146,15 +146,10 @@ input.aaInput {
 .component .actions {
   display: none;
   position: absolute;
-  left: 0;
 }
 
 .component:hover .actions {
   display: block;
-}
-
-.actionCell {
-  position: relative;
 }
 
 .action {
